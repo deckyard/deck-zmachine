@@ -7,23 +7,23 @@
 #   jennifer test src/zmachine_test.j
 
 func putMissingProperty() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     putProp($m, HALL, 1, 5);
 }
 
 func badAttribute() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     hasAttr($m, HALL, 32);
 }
 
 func objectZero() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     objectAddress($m, 0);
 }
 
 func testTheTree() {
     for (def path in [LANTERN3, LANTERN5]) {
-        def m as Machine init open($path);
+        def m as Machine init story($path);
         testing.assertEqual(toText($m, shortName($m, HALL)), "Hall");
         testing.assertEqual(link($m, LAMP, 0), HALL);
         testing.assertEqual(link($m, HALL, 2), PLAYER);
@@ -35,7 +35,7 @@ func testTheTree() {
 
 func testInsertAndDetach() {
     for (def path in [LANTERN3, LANTERN5]) {
-        def m as Machine init open($path);
+        def m as Machine init story($path);
         $m = insertObject($m, LAMP, PLAYER);
         testing.assertEqual(link($m, LAMP, 0), PLAYER);
         testing.assertEqual(link($m, PLAYER, 2), LAMP);
@@ -51,7 +51,7 @@ func testInsertAndDetach() {
 }
 
 func testDetachFromTheMiddleOfASiblingList() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     $m = insertObject($m, GARDEN, HALL);
     # HALL's children: GARDEN, PLAYER, LAMP
     $m = detach($m, PLAYER);
@@ -61,7 +61,7 @@ func testDetachFromTheMiddleOfASiblingList() {
 
 func testAttributes() {
     for (def path in [LANTERN3, LANTERN5]) {
-        def m as Machine init open($path);
+        def m as Machine init story($path);
         testing.assertTrue(not hasAttr($m, LAMP, 0));
         $m = setAttr($m, LAMP, 0, true);
         $m = setAttr($m, LAMP, 31, true);
@@ -72,7 +72,7 @@ func testAttributes() {
         testing.assertTrue(not hasAttr($m, LAMP, 0));
         testing.assertTrue(not hasAttr($m, 0, 0));
     }
-    def m5 as Machine init open(LANTERN5);
+    def m5 as Machine init story(LANTERN5);
     $m5 = setAttr($m5, LAMP, 47, true);
     testing.assertTrue(hasAttr($m5, LAMP, 47));
     testing.assertThrows("badAttribute", ERROR_KIND);
@@ -81,7 +81,7 @@ func testAttributes() {
 
 func testProperties() {
     for (def path in [LANTERN3, LANTERN5]) {
-        def m as Machine init open($path);
+        def m as Machine init story($path);
         # the name property holds two dictionary words
         def first as int init nextProp($m, LAMP, 0);
         testing.assertTrue($first != 0);
@@ -98,7 +98,7 @@ func testProperties() {
 }
 
 func testMissingPropertiesUseTheDefaults() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     $m = storeWord($m, $m.objects + 2 * 9, 77);
     testing.assertEqual(getProp($m, HALL, 10), 77);
     testing.assertThrows("putMissingProperty", ERROR_KIND);

@@ -14,3 +14,7 @@ after changing a source.
 | `lantern.*` | a two-room game written for this deck: line input, the status line, save, restore, undo, keys, random numbers, Unicode | LGPL-3.0-only, like the deck |
 
 None of them is an Infocom game.
+
+jvc runs the overlays from a copy of `src/` alone, so the script also writes
+Lantern into `src/topics/fixtures/lantern_test.j` as base64; the overlays play
+that copy, and skip Czech and Praxix when this directory is not there.

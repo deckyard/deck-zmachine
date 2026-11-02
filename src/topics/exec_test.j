@@ -16,23 +16,23 @@ func runAfterQuit() {
 }
 
 func sendBeforeRun() {
-    send(open(LANTERN5), "look");
+    send(story(LANTERN5), "look");
 }
 
 func waitingBeforeRun() {
-    waiting(open(LANTERN5));
+    waiting(story(LANTERN5));
 }
 
 func returnFromMain() {
-    ret(open(LANTERN5), 0);
+    ret(story(LANTERN5), 0);
 }
 
 func divideByZero() {
-    divide(open(LANTERN5), 1, 0, false);
+    divide(story(LANTERN5), 1, 0, false);
 }
 
 func illegalOpcode() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     # 0OP opcode 14 is the EXT prefix 0xbe; 0xbf's short-form twin is 0xb0+14
     $m.mem[$m.pc] = 0xbe;
     $m.mem[$m.pc + 1] = 0x20;
@@ -41,6 +41,9 @@ func illegalOpcode() {
 }
 
 func testCzechPassesInEveryVersion() {
+    if (not haveTestdata()) {
+        return;
+    }
     for (def v in ["3", "4", "5", "7", "8"]) {
         def m as Machine init run(open("testdata/czech/czech.z" + $v));
         def out as string init output($m);
@@ -51,6 +54,9 @@ func testCzechPassesInEveryVersion() {
 }
 
 func testPraxixPasses() {
+    if (not haveTestdata()) {
+        return;
+    }
     def m as Machine init send(run(open("testdata/praxix/praxix.z5")), "all");
     testing.assertTrue(strings.contains(output($m), "All tests passed."));
 }
@@ -92,7 +98,7 @@ func testStoryErrorsThrow() {
 }
 
 func testDivisionRoundsTowardZero() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     testing.assertEqual(divide($m, -7, 2, false), -3);
     testing.assertEqual(divide($m, -7, 2, true), -1);
     testing.assertEqual(divide($m, 7, -2, false), -3);

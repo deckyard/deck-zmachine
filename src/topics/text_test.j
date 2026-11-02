@@ -30,7 +30,7 @@ func testTheDefaultAlphabet() {
 }
 
 func testTheExtraCharacters() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     testing.assertEqual(len(strings.chars(EXTRA_CHARS)), 69);
     testing.assertEqual($m.zscii[155], "ä");
     testing.assertEqual($m.zscii[176], "É");
@@ -41,7 +41,7 @@ func testTheExtraCharacters() {
 }
 
 func testInputCharactersToZscii() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     testing.assertEqual(charToZscii($m, "a"), 97);
     testing.assertEqual(charToZscii($m, "\n"), 13);
     testing.assertEqual(charToZscii($m, "ß"), 161);
@@ -50,7 +50,7 @@ func testInputCharactersToZscii() {
 
 func testEncodedWordsAreFoundInTheDictionary() {
     for (def path in [LANTERN3, LANTERN5]) {
-        def m as Machine init open($path);
+        def m as Machine init story($path);
         testing.assertTrue(lookup($m, $m.dict, encodeWord($m, codesOf("lamp"))) != 0);
         testing.assertTrue(lookup($m, $m.dict, encodeWord($m, codesOf("n"))) != 0);
         testing.assertEqual(lookup($m, $m.dict, encodeWord($m, codesOf("xyzzy"))), 0);
@@ -58,8 +58,8 @@ func testEncodedWordsAreFoundInTheDictionary() {
 }
 
 func testWordsAreCutToTheVersionsLength() {
-    def m3 as Machine init open(LANTERN3);
-    def m5 as Machine init open(LANTERN5);
+    def m3 as Machine init story(LANTERN3);
+    def m5 as Machine init story(LANTERN5);
     testing.assertEqual(len(encodeWord($m3, codesOf("inventory"))), 4);
     testing.assertEqual(len(encodeWord($m5, codesOf("inventory"))), 6);
     # version 3 compares six letters only
@@ -69,7 +69,7 @@ func testWordsAreCutToTheVersionsLength() {
 }
 
 func testCharactersOutsideTheAlphabetsAreEscaped() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     def enc as list of int init encodeWord($m, [155]);
     # 5 (shift to A2), 6 (escape), then 155 in two halves
     testing.assertEqual((($enc[0] << 8) | $enc[1]) >> 5, (5 << 5) | 6);
@@ -77,7 +77,7 @@ func testCharactersOutsideTheAlphabetsAreEscaped() {
 }
 
 func testDecodeReadsTheObjectNames() {
-    def m as Machine init open(LANTERN3);
+    def m as Machine init story(LANTERN3);
     testing.assertEqual(toText($m, shortName($m, LAMP)), "brass lamp");
     def t as int init propTable($m, LAMP);
     testing.assertEqual(skipString($m, $t + 1), $t + 1 + 2 * $m.mem[$t]);

@@ -7,7 +7,7 @@
 #   jennifer test src/zmachine_test.j
 
 func nestTooManyStreams() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     for (def i in 0..17) {
         $m = selectStream($m, 3, 0x40);
     }
@@ -55,7 +55,7 @@ func testTheGameDrawsTheUpperWindowFromVersion4() {
 }
 
 func testSplitAndErase() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     $m = split($m, 2);
     $m.window = 1;
     $m = emit($m, [65, 13, 66, 67]);
@@ -76,7 +76,7 @@ func testSplitAndErase() {
 }
 
 func testTextOffTheUpperWindowIsDropped() {
-    def m as Machine init split(open(LANTERN5), 1);
+    def m as Machine init split(story(LANTERN5), 1);
     $m.window = 1;
     $m.col = 79;
     $m = emit($m, [65, 66, 13, 67]);
@@ -85,7 +85,7 @@ func testTextOffTheUpperWindowIsDropped() {
 }
 
 func testStream3CapturesOutput() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     $m = selectStream($m, 3, 0x40);
     $m = emit($m, [104, 0, 105]);
     $m = emitText($m, "!");
@@ -98,7 +98,7 @@ func testStream3CapturesOutput() {
 }
 
 func testStreamsOneAndTwo() {
-    def m as Machine init open(LANTERN5);
+    def m as Machine init story(LANTERN5);
     $m = selectStream($m, -1, 0);
     $m = emitText($m, "gone");
     testing.assertEqual(len($m.out), 0);

@@ -7,11 +7,13 @@
  *
  * Run with `jennifer test src/zmachine_test.j` from the repository root. One
  * test file per topic under `topics/`, spliced with `include` in the order
- * `zmachine.j` splices the topics. The story files they play are in
- * `testdata/` (see its README).
+ * `zmachine.j` splices the topics. Lantern, the test game, is embedded in
+ * `topics/fixtures/`; the conformance suites in `testdata/` (see its README)
+ * run only from a checkout.
  */
 
 use testing;
+use encoding;
 
 include "topics/core_test.j";
 include "topics/text_test.j";

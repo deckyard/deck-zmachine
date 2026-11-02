@@ -121,7 +121,7 @@ func testMemoryCompressionRoundTrips() {
     testing.assertEqual(expandMemory($m, $packed, true), $m.mem);
     testing.assertEqual(expandMemory($m, $m.mem[..$m.staticBase], false), $m.mem);
     # a fresh machine differs from the story only in the header the interpreter writes
-    def fresh as bytes init compressMemory(open(LANTERN5));
+    def fresh as bytes init compressMemory(story(LANTERN5));
     testing.assertTrue(len($fresh) > 0 and len($fresh) < 64);
 }
 
