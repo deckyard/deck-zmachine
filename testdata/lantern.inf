@@ -1,0 +1,177 @@
+! SPDX-License-Identifier: LGPL-3.0-only
+! SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
+!
+! Lantern - a two-room test game for @deckyard/zmachine, without the Inform
+! library. It exercises what the conformance suites leave out: line input
+! and the dictionary, the status line of both kinds, save, restore, undo,
+! single keys, random numbers and Unicode.
+!
+! Build (Inform 6.36 or later):
+!   inform6 -v3 lantern.inf lantern.z3
+!   inform6 -v5 lantern.inf lantern.z5
+!   inform6 -v8 lantern.inf lantern.z8
+
+Constant Story "Lantern";
+
+Global location;
+Global score;
+Global turns;
+
+Array textbuf -> 82;
+Array parsebuf --> 33;
+Array memstream --> 20;
+
+Property description;
+
+Object hall "Hall"
+    with description "A bare hall. A garden lies to the north.";
+
+Object garden "Garden"
+    with description "An overgrown garden. The hall is to the south.";
+
+Object player "you" hall;
+
+Object lamp "brass lamp" hall
+    with name 'lamp' 'brass';
+
+[ Main r;
+    location = hall;
+    print "Lantern^A test game for the zmachine deck.^";
+    Look();
+    for (::) {
+        DrawStatus();
+        print "^>";
+        textbuf->0 = 80;
+        textbuf->1 = 0;
+        parsebuf->0 = 15;
+        read textbuf parsebuf;
+        #Iftrue (#version_number >= 5);
+        if (parsebuf-->1 ~= 'undo') {
+            @save_undo -> r;
+            if (r == 2) {
+                print "Undone.^";
+                continue;
+            }
+        }
+        #Endif;
+        r = Command(parsebuf-->1, parsebuf-->3);
+        if (r == 1) turns++;
+        if (r == 2) {
+            print "Bye.^";
+            quit;
+        }
+    }
+];
+
+[ Command w obj r k;
+    switch (w) {
+    'look', 'l//':
+        Look();
+    'north', 'n//':
+        if (location ~= hall) "You can't go that way.";
+        location = garden;
+        move player to garden;
+        Look();
+    'south', 's//':
+        if (location ~= garden) "You can't go that way.";
+        location = hall;
+        move player to hall;
+        Look();
+    'take':
+        if (obj ~= 'lamp') "Take what?";
+        if (lamp notin location) "You see no lamp here.";
+        move lamp to player;
+        if (score == 0) score = 5;
+        "Taken.";
+    'drop':
+        if (obj ~= 'lamp') "Drop what?";
+        if (lamp notin player) "You aren't carrying it.";
+        move lamp to location;
+        "Dropped.";
+    'inventory', 'i//':
+        if (child(player) == 0) "You are empty-handed.";
+        print "You are carrying:^";
+        for (obj = child(player): obj: obj = sibling(obj)) {
+            print "  ";
+            @print_obj obj;
+            new_line;
+        }
+    'save':
+        save SaveOk;
+        "Save failed.";
+        .SaveOk;
+        "Saved.";
+    'restore':
+        restore RestoreOk;
+        "Restore failed.";
+        .RestoreOk;
+        "Restored.";
+    'undo':
+        #Iftrue (#version_number >= 5);
+        @restore_undo -> r;
+        if (r == 0) "Nothing to undo.";
+        #Ifnot;
+        "Undo needs version 5.";
+        #Endif;
+    'key':
+        #Iftrue (#version_number >= 4);
+        print "Press a key: ";
+        @read_char 1 -> k;
+        print "you pressed ", k, ".^";
+        #Ifnot;
+        "Keys need version 4.";
+        #Endif;
+    'random':
+        random(-42);
+        print "Dice:";
+        for (r = 0: r < 5: r++) print " ", random(6);
+        new_line;
+    'euro':
+        print "Accents: ";
+        @print_char 155;
+        @print_char 176;
+        #Iftrue (#version_number >= 5);
+        print ", euro: ";
+        @print_unicode $20ac;
+        #Endif;
+        new_line;
+    'stream':
+        @output_stream 3 memstream;
+        print "hidden";
+        @output_stream -3;
+        print "Captured ", memstream-->0, " characters.^";
+    'quit':
+        return 2;
+    default:
+        "I don't know that word.";
+    }
+    return 1;
+];
+
+[ Look obj;
+    @print_obj location;
+    new_line;
+    print (string) location.description;
+    new_line;
+    for (obj = child(location): obj: obj = sibling(obj)) {
+        if (obj ~= player) {
+            print "There is a ";
+            @print_obj obj;
+            print " here.^";
+        }
+    }
+];
+
+[ DrawStatus;
+    #Iftrue (#version_number >= 4);
+    @split_window 1;
+    @set_window 1;
+    @set_cursor 1 1;
+    spaces 30;
+    @set_cursor 1 2;
+    @print_obj location;
+    @set_cursor 1 20;
+    print "Turns: ", turns;
+    @set_window 0;
+    #Endif;
+];
