@@ -1,6 +1,6 @@
 [package]
 name = "@deckyard/zmachine"
-version = "0.1.0"
+version = "0.2.0-dev"
 description = "A Z-machine interpreter: plays Infocom and Inform games (versions 3, 4, 5, 7 and 8)"
 license = "LGPL-3.0-only"
 authors = ["mplx <mplx@jennifer-lang.dev>"]
