@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.25.0
+# pragma-jennifer-version: >=0.26.0
 
 # zmachine - Z-characters, ZSCII, the dictionary and the tokeniser.
 # Spliced into zmachine.j via include - not a standalone module.
@@ -333,7 +333,7 @@ func lookup(m as Machine, dict as int, key as list of int) {
  */
 func compareEntry(mem as bytes, e as int, key as list of int, size as int) {
     for (def i in 0..$size) {
-        def d as int init $mem[$e + $i] -$key[$i];
+        def d as int init $mem[$e + $i] - $key[$i];
         if ($d != 0) {
             return $d;
         }
