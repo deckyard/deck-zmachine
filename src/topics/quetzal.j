@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.25.0
+# pragma-jennifer-version: >=0.26.0
 
 # zmachine - saving and restoring: Quetzal files and undo.
 # Spliced into zmachine.j via include - not a standalone module.
@@ -119,7 +119,7 @@ func putBE(out as bytes, v as int, size as int) {
  * @return {bytes} the chunk
  */
 func chunk(id as string, body as bytes) {
-    def out as bytes init convert.bytesFromString($id, "utf-8");
+    def out as bytes init convert.bytesFromString("utf-8", $id);
     $out = putBE($out, len($body), 4);
     def parts as list of bytes init [$out, $body];
     if (len($body) % 2 == 1) {
@@ -140,13 +140,13 @@ func writeQuetzal(m as Machine) {
     }
     $head = putBE($head, $m.resultPc, 3);
     def body as list of bytes init [
-        convert.bytesFromString("IFZS", "utf-8"),
+        convert.bytesFromString("utf-8", "IFZS"),
         chunk("IFhd", $head),
         chunk("CMem", compressMemory($m)),
         chunk("Stks", writeStacks($m))
     ];
     def form as bytes init binary.join($body);
-    def out as bytes init convert.bytesFromString("FORM", "utf-8");
+    def out as bytes init convert.bytesFromString("utf-8", "FORM");
     $out = putBE($out, len($form), 4);
     return binary.join([$out, $form]);
 }
@@ -243,8 +243,8 @@ func getBE(data as bytes, at as int, size as int) {
  */
 func readQuetzal(m as Machine, data as bytes) {
     def n as int init len($data);
-    if ($n < 12 or convert.stringFromBytes($data[0..4], "utf-8") != "FORM" or
-        convert.stringFromBytes($data[8..12], "utf-8") != "IFZS") {
+    if ($n < 12 or convert.stringFromBytes("utf-8", $data[0..4]) != "FORM" or
+        convert.stringFromBytes("utf-8", $data[8..12]) != "IFZS") {
         fail("not a Quetzal save file");
     }
     def end as int init math.min($n, 8 + getBE($data, 4, 4));
@@ -255,7 +255,7 @@ func readQuetzal(m as Machine, data as bytes) {
     def haveMem as bool init false;
     def compressed as bool init true;
     while ($at + 8 <= $end) {
-        def id as string init convert.stringFromBytes($data[$at..$at + 4], "utf-8");
+        def id as string init convert.stringFromBytes("utf-8", $data[$at..$at + 4]);
         def size as int init getBE($data, $at + 4, 4);
         if ($at + 8 + $size > $end) {
             fail("the save file is truncated in its " + $id + " chunk");

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.25.0
+# pragma-jennifer-version: >=0.26.0
 
 # zmachine - white-box tests for the core topic, and the helpers every other
 # overlay uses. Spliced into zmachine_test.j via include - run with:
@@ -41,7 +41,7 @@ func storyBytes(name as string) {
     } elseif ($name == LANTERN8) {
         $lines = LANTERN_Z8_BASE64;
     }
-    return encoding.fromText(strings.join($lines, ""), "base64");
+    return encoding.fromText("base64", strings.join($lines, ""));
 }
 
 /**
