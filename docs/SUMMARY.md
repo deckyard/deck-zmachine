@@ -15,3 +15,4 @@
 
 - [What is supported](reference/support.md)
 - [Cheatsheet](reference/cheatsheet.md)
+- [Design](design.md)
