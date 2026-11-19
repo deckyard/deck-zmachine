@@ -142,4 +142,3 @@ Set them before the first `run`; games read them when they start.
 | Name | Value | What it is |
 |---|---:|---|
 | `ERROR_KIND` | `"zmachine"` | the `kind` every `Error` here carries |
-| `VERSION` | generated | the deck version, injected from the git tag |

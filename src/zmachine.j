@@ -42,7 +42,6 @@ use lists;
 use math;
 use fs;
 
-include "topics/version.j";
 include "topics/core.j";
 include "topics/text.j";
 include "topics/objects.j";

@@ -63,8 +63,7 @@ Not in scope:
 - **Pure computation.** No capabilities; `open` reads a story file with `fs`,
   and `load` takes the bytes directly. The deck runs on `jennifer-tiny` too.
 - **Topics layout.** `src/zmachine.j` includes core, text, objects, screen,
-  story, exec and quetzal (plus the generated `version.j`), each with its
-  overlay.
+  story, exec and quetzal, each with its overlay.
 
 ## Errors
 
