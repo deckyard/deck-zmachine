@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.26.0
+# pragma-jennifer-version: >=0.27.0
 
 # zmachine - white-box tests for the text topic.
 # Spliced into zmachine_test.j via include - run with:
@@ -124,6 +124,6 @@ func testVersion3TextIsZeroTerminated() {
 
 func testLongInputIsCutToTheBuffer() {
     def m as Machine init started(LANTERN5);
-    $m = fillText($m, strings.repeat("a", 200));
+    $m = fillText($m, strings.replicate("a", 200));
     testing.assertEqual($m.mem[$m.readText + 1], 80);
 }

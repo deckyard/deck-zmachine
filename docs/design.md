@@ -109,7 +109,8 @@ Not in scope:
 
 ## Dependencies on the interpreter
 
-- Floor `jennifer >=0.26.0` and `jennifer-tiny >=0.26.0`.
+- Floor `jennifer >=0.27.0` and `jennifer-tiny >=0.27.0`: the UTF-8 codecs
+  of `encoding.encode` / `decode` and `strings.replicate` arrived in 0.27.0.
 - Built-in libraries `binary`, `strings`, `convert`, `lists`, `math`, `fs`.
 - Moving a value into a call in the `$m = f($m, ...)` form, without which
   each instruction would copy the story's memory.

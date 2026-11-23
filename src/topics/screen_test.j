@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.26.0
+# pragma-jennifer-version: >=0.27.0
 
 # zmachine - white-box tests for the screen topic.
 # Spliced into zmachine_test.j via include - run with:
@@ -64,7 +64,7 @@ func testSplitAndErase() {
     testing.assertEqual($m.col, 2);
     $m.col = 1;
     $m = eraseLine($m);
-    testing.assertEqual($m.upper[1], "B" + strings.repeat(" ", 79));
+    testing.assertEqual($m.upper[1], "B" + strings.replicate(" ", 79));
     $m = split($m, 3);
     testing.assertEqual(len($m.upper), 3);
     testing.assertEqual($m.upper[0][..1], "A");

@@ -14,7 +14,7 @@ Manual: **<https://deckyard.github.io/deck-zmachine/>**
 
 ## Install
 
-Requires Jennifer 0.26.0 or newer.
+Requires Jennifer 0.27.0 or newer.
 
 ```sh
 jvc add @deckyard/zmachine

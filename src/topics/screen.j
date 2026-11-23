@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.26.0
+# pragma-jennifer-version: >=0.27.0
 
 # zmachine - output streams, the two windows and the status line.
 # Spliced into zmachine.j via include - not a standalone module.
@@ -68,7 +68,7 @@ func statusLine(m as Machine) {
     if (len($left) > $room - 1) {
         $left = $left[..math.max(0, $room - 1)];
     }
-    def line as string init $left + strings.repeat(" ", $room - len($left)) + $right + " ";
+    def line as string init $left + strings.replicate(" ", $room - len($left)) + $right + " ";
     if (len($line) > $m.width) {
         return $line[..$m.width];
     }
@@ -81,7 +81,7 @@ func statusLine(m as Machine) {
  * @return {string} `width` spaces
  */
 func blankRow(m as Machine) {
-    return strings.repeat(" ", $m.width);
+    return strings.replicate(" ", $m.width);
 }
 
 /**
@@ -209,7 +209,7 @@ func eraseWindow(m as Machine, w as int) {
 func eraseLine(m as Machine) {
     if ($m.window == 1 and $m.row < len($m.upper) and $m.col < $m.width) {
         def r as string init $m.upper[$m.row];
-        $m.upper[$m.row] = $r[..$m.col] + strings.repeat(" ", $m.width - $m.col);
+        $m.upper[$m.row] = $r[..$m.col] + strings.replicate(" ", $m.width - $m.col);
     }
     return $m;
 }

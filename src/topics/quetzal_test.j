@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.26.0
+# pragma-jennifer-version: >=0.27.0
 
 # zmachine - white-box tests for the quetzal topic.
 # Spliced into zmachine_test.j via include - run with:
@@ -39,7 +39,7 @@ func restoreWhileReading() {
 }
 
 func restoreGarbage() {
-    restore(restoring(LANTERN5), convert.bytesFromString("utf-8", "FORM....IFZS"));
+    restore(restoring(LANTERN5), encoding.encode("utf-8", "FORM....IFZS"));
 }
 
 func restoreOtherStory() {
@@ -53,11 +53,11 @@ func restoreTruncated() {
 
 func testSaveWritesAQuetzalFile() {
     def data as bytes init gardenSave(LANTERN5);
-    testing.assertEqual(convert.stringFromBytes("utf-8", $data[0..4]), "FORM");
+    testing.assertEqual(encoding.decode("utf-8", $data[0..4]), "FORM");
     testing.assertEqual(getBE($data, 4, 4), len($data) - 8);
-    testing.assertEqual(convert.stringFromBytes("utf-8", $data[8..16]), "IFZSIFhd");
-    testing.assertTrue(binary.contains($data, convert.bytesFromString("utf-8", "CMem")));
-    testing.assertTrue(binary.contains($data, convert.bytesFromString("utf-8", "Stks")));
+    testing.assertEqual(encoding.decode("utf-8", $data[8..16]), "IFZSIFhd");
+    testing.assertTrue(binary.contains($data, encoding.encode("utf-8", "CMem")));
+    testing.assertTrue(binary.contains($data, encoding.encode("utf-8", "Stks")));
 }
 
 func testTheDummyFrameIsZero() {

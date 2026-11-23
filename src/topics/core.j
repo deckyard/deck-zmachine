@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LGPL-3.0-only
 # SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev>
-# pragma-jennifer-version: >=0.26.0
+# pragma-jennifer-version: >=0.27.0
 
 # zmachine - the machine state and the primitives every other topic builds on.
 # Spliced into zmachine.j via include - not a standalone module.
@@ -195,7 +195,7 @@ func failAt(m as Machine, message as string) {
  * @return {string} `$` and lower case hex digits
  */
 func hex(n as int) {
-    return "$" + convert.toString($n, 16);
+    return "$" + io.sprintf("%d|base=16", $n);
 }
 
 /**
