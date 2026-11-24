@@ -33,7 +33,7 @@ $m = zmachine.restore($m, fs.readBytes("story.qzl"));
 ```
 
 The game goes on from the `save` that wrote the file, which now reports
-success (Zork says "Ok."). `restore` throws on a file that is not a Quetzal
+success (Zork™ says "Ok."). `restore` throws on a file that is not a Quetzal
 save, is damaged, or belongs to another story or release (the header's
 release, serial and checksum must match); the machine passed in is still
 waiting, and `resume(m, false)` turns the restore down.

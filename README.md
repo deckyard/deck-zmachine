@@ -4,7 +4,7 @@
 [![Documentation](https://img.shields.io/badge/docs-github%20pages-blue)](https://deckyard.github.io/deck-zmachine/)
 [![release](https://img.shields.io/github/v/release/deckyard/deck-zmachine)](https://github.com/deckyard/deck-zmachine/releases/latest)
 
-A Z-machine interpreter: plays Infocom and Inform games, story files of
+A Z-machine interpreter: plays Infocom™ and Inform games, story files of
 versions 3, 4, 5, 7 and 8, with Quetzal saves and undo. The machine has no
 terminal of its own; the host sends it lines and shows what it prints, so a
 game runs as well in a chat bot or a web page as in a console. Pure Jennifer
@@ -52,8 +52,8 @@ io.printf("%s\n", zmachine.upperWindow($m)[0]);
 jennifer run examples/play.j zork1.z3
 ```
 
-No game ships with the deck. Zork I-III are
-[published by Microsoft under the MIT licence](https://github.com/historicalsource/zork1),
+No game ships with the deck. Zork™ I-III are
+[published by Microsoft™ under the MIT licence](https://github.com/historicalsource/zork1),
 the [IF Archive](https://ifarchive.org/indexes/if-archive/games/zcode/) holds
 hundreds of free Inform games, and `testdata/lantern.z5` is a two-room test
 game.
@@ -68,3 +68,13 @@ supported* page lists what is left out.
 
 LGPL-3.0-only, see [LICENSE](LICENSE). Copyright (C) 2026 mplx &lt;mplx@jennifer-lang.dev&gt;.
 The test stories in `testdata/` carry their own licences; see its README.
+
+## Trademarks
+
+The MIT licence under which Microsoft published the Zork I-III source code
+covers the code only, not the game names. Zork™, Infocom™, Planetfall™, the
+other Infocom game titles and other product and company names may be
+trademarks of their respective owners. They are used only to identify the
+products this deck works with. This deck is an independent project, not
+affiliated with, sponsored or endorsed by Activision Publishing, Inc. or
+Microsoft Corporation.

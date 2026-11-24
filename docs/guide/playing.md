@@ -11,7 +11,7 @@ import "@deckyard/zmachine/" as zmachine;
 
 `open(path)` reads a story file, `load(story)` takes its bytes. Both check the
 header and throw on anything but a version 3, 4, 5, 7 or 8 story. The file
-extension does not matter: Infocom's `.dat` files load as well as `.z3` to
+extension does not matter: Infocom™'s `.dat` files load as well as `.z3` to
 `.z8`. Blorb files (`.zblorb`) do not; extract the `ZCOD` chunk first.
 
 Settings go between loading and the first `run`, because a game reads them

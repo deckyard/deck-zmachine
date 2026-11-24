@@ -6,14 +6,14 @@
 ## Scope
 
 `@deckyard/zmachine` is a Z-machine interpreter in pure Jennifer. It plays
-Infocom and Inform story files of versions 3, 4, 5, 7 and 8 following the
+Infocom™ and Inform story files of versions 3, 4, 5, 7 and 8 following the
 Z-Machine Standard 1.1, with Quetzal saves and undo. It has no terminal of its
 own: the host feeds it lines or keys and reads its output, so the same game
 runs in a console, a chat bot or a web page.
 
 Not in scope:
 
-- **Versions 1, 2 and 6.** The earliest Zork releases and the graphical games
+- **Versions 1, 2 and 6.** The earliest Zork™ releases and the graphical games
   are rejected by `load`.
 - **Presentation.** Colours, text styles, extra fonts, sound, mouse, menus and
   pictures are ignored or refused in the header; the host decides how text
@@ -57,7 +57,7 @@ Not in scope:
 - **Random numbers.** Unseeded play uses the interpreter's random source;
   `seed` gives repeatable games (a seeded generator), and small negative
   seeds from the game select the Standard's counting mode.
-- **Header.** The machine reports interpreter number 6 (IBM PC), version `J`
+- **Header.** The machine reports interpreter number 6 (IBM™ PC), version `J`
   and Standard revision 1.1. Restart and restore keep the transcript and
   fixed-pitch bits, as the Standard requires.
 - **Pure computation.** No capabilities; `open` reads a story file with `fs`,

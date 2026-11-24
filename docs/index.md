@@ -3,7 +3,7 @@
 
 # @deckyard/zmachine
 
-A Z-machine interpreter: plays Infocom and Inform games (story files of
+A Z-machine interpreter: plays Infocom™ and Inform games (story files of
 versions 3, 4, 5, 7 and 8).
 
 This deck is part of [Deckyard](https://github.com/deckyard), community decks for [Jennifer](https://jennifer-lang.dev/).
@@ -63,7 +63,7 @@ try {
 
 ## Speed
 
-A turn of Zork I takes 100 to 160 ms with the default `jennifer` binary on a
+A turn of Zork™ I takes 100 to 160 ms with the default `jennifer` binary on a
 desktop machine, and starting the game 35 ms. The Czech conformance suite, about
 400 tests, runs in half a second.
 
@@ -76,3 +76,13 @@ desktop machine, and starting the game 35 ms. The Czech conformance suite, about
 | [The screen](guide/screen.md) | the lower window, the upper window, the status line |
 | [What is supported](reference/support.md) | versions, opcodes, what is left out, conformance |
 | [Cheatsheet](reference/cheatsheet.md) | every export |
+
+## Trademarks
+
+The MIT licence under which Microsoft published the Zork I-III source code
+covers the code only, not the game names. Zork™, Infocom™, Planetfall™, the
+other Infocom game titles and other product and company names may be
+trademarks of their respective owners. They are used only to identify the
+products this deck works with. This deck is an independent project, not
+affiliated with, sponsored or endorsed by Activision Publishing, Inc. or
+Microsoft Corporation.

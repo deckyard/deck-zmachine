@@ -13,7 +13,7 @@ after changing a source.
 | `praxix/` | Praxix by Zarf and Dannii: arithmetic, undo, streams, tables, Standard 1.1 | public domain; its indirect-variable test is from Czech, under Czech's licence |
 | `lantern.*` | a two-room game written for this deck: line input, the status line, save, restore, undo, keys, random numbers, Unicode | LGPL-3.0-only, like the deck |
 
-None of them is an Infocom game.
+None of them is an Infocom™ game.
 
 jvc runs the overlays from a copy of `src/` alone, so the script also writes
 Lantern into `src/topics/fixtures/lantern_test.j` as base64; the overlays play
