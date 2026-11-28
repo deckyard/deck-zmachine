@@ -4,7 +4,7 @@
 # Playing a story
 
 ```jennifer
-import "@deckyard/zmachine/" as zmachine;
+import "@skiffyard/zmachine/" as zmachine;
 ```
 
 ## Loading

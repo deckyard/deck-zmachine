@@ -4,7 +4,7 @@
 # The screen
 
 ```jennifer
-import "@deckyard/zmachine/" as zmachine;
+import "@skiffyard/zmachine/" as zmachine;
 ```
 
 A Z-machine screen has two windows. The lower one scrolls and holds the story;

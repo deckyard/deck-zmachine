@@ -5,7 +5,7 @@
 
 ## Scope
 
-`@deckyard/zmachine` is a Z-machine interpreter in pure Jennifer. It plays
+`@skiffyard/zmachine` is a Z-machine interpreter in pure Jennifer. It plays
 Infocom™ and Inform story files of versions 3, 4, 5, 7 and 8 following the
 Z-Machine Standard 1.1, with Quetzal saves and undo. It has no terminal of its
 own: the host feeds it lines or keys and reads its output, so the same game

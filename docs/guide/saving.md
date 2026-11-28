@@ -4,7 +4,7 @@
 # Saving, restoring and undo
 
 ```jennifer
-import "@deckyard/zmachine/" as zmachine;
+import "@skiffyard/zmachine/" as zmachine;
 ```
 
 ## Saving

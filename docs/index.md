@@ -1,12 +1,12 @@
 <!-- SPDX-License-Identifier: LGPL-3.0-only -->
 <!-- SPDX-FileCopyrightText: Copyright (C) 2026 mplx <mplx@jennifer-lang.dev> -->
 
-# @deckyard/zmachine
+# @skiffyard/zmachine
 
 A Z-machine interpreter: plays Infocom™ and Inform games (story files of
 versions 3, 4, 5, 7 and 8).
 
-This deck is part of [Deckyard](https://github.com/deckyard), community decks for [Jennifer](https://jennifer-lang.dev/).
+This deck is part of [Skiffyard](https://github.com/skiffyard), small community decks for [Jennifer](https://jennifer-lang.dev/).
 
 The machine has no terminal of its own. The host gives it lines and keys and
 shows what it prints, so one game can run in a console, a chat bot or a web
@@ -17,7 +17,7 @@ file.
 
 ```jennifer
 use io;
-import "@deckyard/zmachine/" as zmachine;
+import "@skiffyard/zmachine/" as zmachine;
 
 def m as zmachine.Machine init zmachine.run(zmachine.open("story.z5"));
 while (zmachine.waiting($m) == zmachine.Wait.Line) {

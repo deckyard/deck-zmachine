@@ -1,8 +1,8 @@
-# @deckyard/zmachine
+# @skiffyard/zmachine
 
-[![test](https://github.com/deckyard/deck-zmachine/actions/workflows/test.yml/badge.svg)](https://github.com/deckyard/deck-zmachine/actions/workflows/test.yml)
-[![Documentation](https://img.shields.io/badge/docs-github%20pages-blue)](https://deckyard.github.io/deck-zmachine/)
-[![release](https://img.shields.io/github/v/release/deckyard/deck-zmachine)](https://github.com/deckyard/deck-zmachine/releases/latest)
+[![test](https://github.com/skiffyard/deck-zmachine/actions/workflows/test.yml/badge.svg)](https://github.com/skiffyard/deck-zmachine/actions/workflows/test.yml)
+[![Documentation](https://img.shields.io/badge/docs-github%20pages-blue)](https://skiffyard.github.io/deck-zmachine/)
+[![release](https://img.shields.io/github/v/release/skiffyard/deck-zmachine)](https://github.com/skiffyard/deck-zmachine/releases/latest)
 
 A Z-machine interpreter: plays Infocom™ and Inform games, story files of
 versions 3, 4, 5, 7 and 8, with Quetzal saves and undo. The machine has no
@@ -10,31 +10,33 @@ terminal of its own; the host sends it lines and shows what it prints, so a
 game runs as well in a chat bot or a web page as in a console. Pure Jennifer
 with no capabilities, so it runs on `jennifer-tiny`; only `open` reads a file.
 
-Manual: **<https://deckyard.github.io/deck-zmachine/>**
+This deck is part of [Skiffyard](https://github.com/skiffyard), small community decks for [Jennifer](https://jennifer-lang.dev/).
+
+Manual: **<https://skiffyard.github.io/deck-zmachine/>**
 
 ## Install
 
 Requires Jennifer 0.27.0 or newer.
 
 ```sh
-jvc add @deckyard/zmachine
+jvc add @skiffyard/zmachine
 ```
 
-jvc vendors the deck to `vendor/deckyard/zmachine/`. Without jvc, copy `src/`
-from a checkout or a `deckyard-zmachine-<version>.tar.gz` release archive
+jvc vendors the deck to `vendor/skiffyard/zmachine/`. Without jvc, copy `src/`
+from a checkout or a `skiffyard-zmachine-<version>.tar.gz` release archive
 there, minus the test overlays:
 
 ```sh
-mkdir -p vendor/deckyard/zmachine
-cp -R path/to/deck-zmachine/src/. vendor/deckyard/zmachine/
-find vendor/deckyard/zmachine -name '*_test.j' -delete
+mkdir -p vendor/skiffyard/zmachine
+cp -R path/to/deck-zmachine/src/. vendor/skiffyard/zmachine/
+find vendor/skiffyard/zmachine -name '*_test.j' -delete
 ```
 
 ## Example
 
 ```jennifer
 use io;
-import "@deckyard/zmachine/" as zmachine;
+import "@skiffyard/zmachine/" as zmachine;
 
 def m as zmachine.Machine init zmachine.run(zmachine.open("zork1.z3"));
 $m = zmachine.send($m, "open mailbox");

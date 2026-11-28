@@ -4,7 +4,7 @@
 # Cheatsheet
 
 Every export. Names are written bare; after
-`import "@deckyard/zmachine/" as zmachine;` they read `zmachine.run(...)`.
+`import "@skiffyard/zmachine/" as zmachine;` they read `zmachine.run(...)`.
 Every failure throws an `Error` with `kind` `"zmachine"`. Functions that return
 a `Machine` leave their `m` argument unchanged.
 

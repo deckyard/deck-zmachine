@@ -26,7 +26,7 @@
  * @module zmachine
  * @see https://inform-fiction.org/zmachine/standards/z1point1/
  * @example
- *   import "@deckyard/zmachine/" as zmachine;
+ *   import "@skiffyard/zmachine/" as zmachine;
  *
  *   def m as zmachine.Machine init zmachine.run(zmachine.open("story.z5"));
  *   while (zmachine.waiting($m) == zmachine.Wait.Line) {
