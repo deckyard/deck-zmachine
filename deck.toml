@@ -1,6 +1,6 @@
 [package]
-name = "@deckyard/zmachine"
-version = "0.3.0"
+name = "@skiffyard/zmachine"
+version = "0.4.0"
 description = "A Z-machine interpreter: plays Infocom and Inform games (versions 3, 4, 5, 7 and 8)"
 license = "LGPL-3.0-only"
 authors = ["mplx <mplx@jennifer-lang.dev>"]
@@ -17,9 +17,9 @@ keywords = [
 ]
 
 [package.urls]
-deck = "https://raw.githubusercontent.com/deckyard/deck-zmachine/main/deck.toml"
-homepage = "https://github.com/deckyard/deck-zmachine"
-manual = "https://deckyard.github.io/deck-zmachine/"
+deck = "https://raw.githubusercontent.com/skiffyard/deck-zmachine/main/deck.toml"
+homepage = "https://github.com/skiffyard/deck-zmachine"
+manual = "https://skiffyard.github.io/deck-zmachine/"
 
 [engines]
 jennifer = ">=0.27.0"
